@@ -12,7 +12,8 @@ class Mkulima{
                       phone:phone_number,
 
                     }
-                    this.farm.push(my_farm);
+                    this.farm.push(my_farm)
+                    return this.farm;
 
      }
      removeFarm(farmId){
@@ -29,11 +30,13 @@ class Mkulima{
                 phone:phone_number,
             address:address}
 
-            this.farm.push(updateFarm)
+            this.farm.push(updateFarm);
+            return this.farm
      }
      
      getFarm(farmId){
-       return this.updateFarm(farmId)
+       let farmB=this.farm.find(farmB=>farmB.id===farmId)
+       return farmB;
      }
      addProduct(productId,name,price){
          var my_product=
@@ -41,12 +44,11 @@ class Mkulima{
 name:name,
 price:price}
 this.products.push(my_product);
+return this.products;
      }
      removeProduct(productId){
-        let myProduct = this.products.productId
-        let index = this.products.indexOf(myProduct)
-       return this.products.splice(index,1)
-        
+        let product2 = this.products.find(product2=>product2.id===productId)
+            return delete this.products[productId];
 
      }
      updateProduct(productId,name,price){
@@ -56,53 +58,37 @@ this.products.push(my_product);
          name:name,
          price:price,
      }
-     this.products.push(update_products)
+     this.products.push(update_products);
+     return this.products;
      }
      getProduct(productId){
-         return this.products
-
+        let product1=this.products.find(product1=>product1.id===productId)
+        return product1;
      }
      printProducts(){
-         console.log(this.products);
+         for(let items of this.products){
+console.log([items.name +","+items.price])
+         }
+         
      }
      calculateOrderCost(productId,quantity){
-         return this.price * quantity
-         
+         let cost=this.products.find(cost=> cost.id===productId)
+         return cost.price*quantity;
      }
 
 }
- let mkulima=new Mkulima()
- mkulima.addFarm(1975,"Lavign Ranch","Lavington Mugendi","P.O BOX 142-60401",+254728422795);
- console.log(mkulima.farm)
-
-
- let mkulima1=new Mkulima();
- console.log(mkulima1.removeFarm(1975));
-
- let mkulima2=new Mkulima();
-mkulima2.updateFarm(1973,"Samba Fields","Jackie Samba",+254713310371,"P.O BOX 40-120250")
-console.log(mkulima2.farm)
-
-let mkulima3=new Mkulima();
- console.log(mkulima3.getFarm(2017))
-
- let mkulima4=new Mkulima();
- mkulima4.addProduct(34053635,"Coconuts",1700)
- console.log(mkulima4.products)
-
- let mkulima5=new Mkulima();
- console.log(mkulima5.removeProduct(34053635))
-
- let mkulima6=new Mkulima();
- mkulima6.updateProduct(34053635,"Potatoes",1750)
- console.log(mkulima6.products)
-
-  let mkulima7=new Mkulima();
-  console.log(mkulima7.getProduct(1997));
-
- let mkulima8=new Mkulima();
- console.log(mkulima8.printProducts())
- let mkulima9=new Mkulima();
- console.log(mkulima9.calculateOrderCost(34053635,2))
+ let mkulima=new Mkulima();
+console.log( mkulima.addFarm(1975,"Lavign Ranch","Lavington Mugendi","P.O BOX 142-60401",+254728422795));
+console.log( mkulima.addFarm("Lav18","Candy Ranch","Kendi Mugendi","P.O BOX 60-20301",+254713310371));
+console.log(mkulima.getFarm(1975))
+console.log(mkulima.removeFarm("Lav18"));
+console.log(mkulima.updateFarm(1973,"Samba Fields","Jackie Samba",+254706529004,"P.O BOX 40-120250"))
+ console.log(mkulima.addProduct(3405,"Coconuts",8900))
+ console.log(mkulima.addProduct("Mel19","Pineapples",7500))
+ console.log(mkulima.removeProduct("34053635"))
+ console.log(mkulima.updateProduct("1997O","Potatoes",1750))
+  console.log(mkulima.getProduct("1997O"));
+ mkulima.printProducts()
+ console.log(mkulima.calculateOrderCost("1997O",2))
 
 
